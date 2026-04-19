@@ -71,15 +71,49 @@ Creates visualization graphs
 python model.py
 ```
 Predicts performance and finds optimal conditions
+
+
 ## Working Principle
-### Data Transmission
-- Binary data is transmitted using simulated LED signals 
-- Receiver decodes signals with noise interference
-### Performance Evaluation
-- Throughput → data efficiency
-- Latency → delay
-- Packet Loss → error rate
-### Machine Learning Optimization
-- Uses Random Forest model
-- Predicts system performance
-- Finds optimal system configurations
+
+### 1. LiFi Signal Modeling
+The system models LiFi communication by encoding binary data into optical signals, where logical ‘1’ and ‘0’ are represented by LED ON/OFF states. This abstraction simulates intensity modulation used in real optical wireless communication systems.
+
+---
+
+### 2. Channel Impairment Simulation
+The transmission channel is modeled to incorporate realistic impairments:
+- **Distance-dependent attenuation** affecting signal strength  
+- **Noise-induced bit errors** simulating environmental interference  
+- **User load variation** representing network congestion  
+
+These factors directly influence the reliability and efficiency of data transmission.
+
+---
+
+### 3. Receiver-Side Decoding and Error Analysis
+The receiver reconstructs the transmitted bitstream under noisy conditions. Bit discrepancies between transmitted and received data are quantified using **Bit Error Rate (BER)**, which serves as the basis for evaluating packet loss and transmission reliability.
+
+---
+
+### 4. Performance Metric Computation
+System performance is evaluated using:
+- **Throughput** → Effective successful data delivery rate  
+- **Latency** → Transmission delay influenced by load and channel conditions  
+- **Packet Loss** → Derived from BER, indicating communication reliability  
+
+These metrics provide a comprehensive view of system behavior under varying conditions.
+
+---
+
+### 5. Machine Learning-Based System Modeling
+A supervised learning model (Random Forest Regressor) is trained on simulated data to learn the relationship between input parameters (distance, noise, users) and performance metrics.
+
+---
+
+### 6. Data-Driven Optimization
+The trained model is used to:
+- Predict system performance for unseen conditions  
+- Identify optimal parameter configurations that maximize throughput and minimize latency  
+- Enable intelligent adaptation of system behavior based on environmental conditions  
+
+This transforms the system from a static simulation into an **intelligent, self-optimizing communication model**.
